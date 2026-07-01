@@ -1,36 +1,45 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devblog</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>DevBlog</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="{% static 'blog/css/style.css' %}" >
 </head>
-<body>
-    <!-- CABEÇAÇALHO -->
+<body class="bg-light d-flex flex-column min-vh-100">
+    
     <header>
-        <h2> Portal Devblog</h2>
-        <a href="/"> inicio</a>
-        <a href="/sobre">sobre</a>
-        <hr>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="{% url 'home' %}">🚀 DevBlog</a>
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'sobre_nos' %}">Sobre</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <main>
-        {% block contend %}
-    <!-- OUTRAS PAGINAS -->
+    <main class="container my-5 flex-grow-1">
+        {% block content %}
+        <!-- AQUI VAI O CONTEUDO DAS OUTRAS PAGINAS -->
         {% endblock %}
-
     </main>
 
-    <footer>
-        <hr>
-        <p>© 2026 Desenvolvido pela turma python</p>
+    <footer class="bg-dark text-white text-center py-4">
+        <p class="mb-0">© 2026 Desenvolvido pela Turma da Trilha de Python</p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-    
 </body>
 </html>

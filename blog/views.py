@@ -2,11 +2,11 @@ from django.http import HttpResponse,request
 from django.shortcuts import render
 from .models import Artigo, Categoria
 
-def home(request, categoria_id=None):
-    categoria_id = request.GET.get('categoria')
+def home(request):
+    categoria_selecionadas = request.GET.get('categoria')
 
-    if categoria_id:
-        noticias = Artigo.objects.filter(categoria_id=categoria_id)
+    if categoria_selecionadas:
+        noticias = Artigo.objects.filter(categoria__nome__icontains=categoria_selecionadas)
     else:
         noticias = Artigo.objects.all()
 

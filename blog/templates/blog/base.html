@@ -18,8 +18,24 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                            <a class="nav-link" href="{% url 'home' %}">Inicio</a>   
                         </li>
+                        <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categorias
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                        {% for categoria in lista_categorias %}
+                             <li>
+                                    <a class="dropdown-item" href="{% url 'home' %} ?=categoria{{categoria.id}}">
+                                        {{ categoria.nome }}
+                                    </a>
+                                </li>
+                        {% empty %}
+                                <li><a class="dropdown-item disabled" href="#">Nenhuma categoria</a></li>
+                        {% endfor %}
+                        </li>
+                        </ul>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'sobre_nos' %}">Sobre</a>
                         </li>

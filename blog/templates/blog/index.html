@@ -1,6 +1,24 @@
 {% extends 'blog/base.html'%}
 
-{%block contend%}
-    <h3>  Ultimas noticias de tecnologis</h3>
-    <p> Bem-vindo ao Devblog! Nossos redatores já estão trabalhandp nos artigos</p>
+{%block content%}
+    <h2>  Ultimas noticias de tecnologis</h2>
+
+    {% for artigo in lista_artigos %}
+
+        <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+
+                <h3 class="card-title text-success"> {{ artigo.titulo }}</h3>
+                <h6 class="card-subtitle mb-2 text-muted"> Categoria: {{ artigo.categoria.nome}} | Autor: {{ artigo.autor }}</h6>
+                <p class="card-text"> {{ artigo.conteudo }}</p>
+                <p class="card-text">
+                    <small class="text-muted"> Publicado em: {{ artigo.data_publicacao}}</small>
+                </p>
+            </div>
+        </div>
+
+    {% empty %}
+    <p> Nenhuma Noticia publicada </p>
+    {% endfor %}
+    
 {%endblock%}

@@ -1,6 +1,6 @@
-from django.http import HttpResponse,request
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Artigo, Categoria
+from .forms import ContatoForm
 
 def home(request):
     categoria_selecionadas = request.GET.get('categoria')
@@ -22,3 +22,31 @@ def home(request):
 def sobre_nos(request):
     return render(request, "blog/sobre.html")
 
+def artigo_detalhes(request, id):
+   
+    noticia = get_object_or_404(Artigo, id=id)
+
+    categorias = Categoria.objects.all()
+    contexto = {
+        'artigos' : noticia,
+        'lista_categorias' : categorias,
+    }
+    return render(request, 'blog/artigo_detalhe.html', contexto)
+
+
+def fale_conosco(request):
+    categorias = Categoria.objects.all()
+    if request.method == 'POST':
+        formulario = ContatoForm(request.POST)
+
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('home')
+    
+    else:
+        formulario = ContatoForm()
+    contexto = {
+        'form': formulario, 
+        'lista_categorias' : categorias,
+    }
+    return render(request, 'blog/contato.html', contexto)

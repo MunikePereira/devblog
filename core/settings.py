@@ -78,6 +78,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'devblog_db',
+        'USER': 'root',
+        'PASSWORD': 'senacrs',
+        'HOST': 'localhost',
+        'PORT': '3307', #em casa é 3306
     }
 }
 

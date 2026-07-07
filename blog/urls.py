@@ -8,5 +8,5 @@ urlpatterns = [
     path('contato/', views.fale_conosco, name='fale_conosco'),
     path('api/artigos/', views.api_listar_artigos, name='api_artigos'),
     path('api/categorias/', views.api_listar_categoria, name='api_categorias'),
-    path('api/artigos/novo', views.api_criar_artigo, name=('api_artigos_novo'))
+    path('api/artigos/novo', views.api_criar_artigo, name=('api_artigos_novo')),
     ]

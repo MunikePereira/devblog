@@ -5,7 +5,7 @@ class ArtigoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artigo
 
-        fields = ['id', 'titulo', 'conteudo', 'data_pubicacao']
+        fields = ['id', 'titulo', 'categoria', 'conteudo', 'data_pubicacao']
 
 class CategoriaSerializer(serializers.ModelSerializer):
     model = Categoria

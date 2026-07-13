@@ -15,7 +15,6 @@ from datetime import timedelta
 from dotenv import load_dotenv
 
 load_dotenv()
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,11 +23,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG') == 'True'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(',')
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.getenv("DEBUG") == 'True'
+
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(',')
 
 
 # Application definition
@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     
 
     'blog',
@@ -82,12 +81,14 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-       'ENGINE': os.getenv('DATABASE_ENGINE'),
-        'NAME': os.getenv('DATABASE_NAME'),
-        'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': os.getenv('DATABASE_HOST'),
-        'PORT': os.getenv('DATABASE_PORT'), #em casa é 3306
+
+        
+        'ENGINE': os.getenv("DATABASE_ENGINE") ,
+        'NAME': os.getenv("DATABASE_NAME"),
+        'USER': os.getenv("DATABASE_USER"),
+        'PASSWORD': os.getenv("DATABASE_PASSWORD"),
+        'HOST': os.getenv("DATABASE_HOST"),
+        'PORT': os.getenv("DATABASE_PORT"), #em casa é 3306
     }
 }
 
@@ -127,8 +128,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
